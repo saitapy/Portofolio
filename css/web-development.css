@@ -1,0 +1,509 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    scroll-behavior: smooth;
+    font-family: "Poppins";
+}
+
+html{
+    font-size: 60%;
+    overflow: hidden;
+    max-width: 100vw;
+
+}
+
+:root{
+    --warna-background: #000;
+    --warna-background-kedua: #100000;
+    --warna-teks: #fff;
+    --warna-utama: #ff9100;
+}
+
+body{
+    background: url(/image/Paranoid\ Android\ -\ Sweet.png);
+    color: var(--warna-teks);
+    justify-content: center;
+    align-items: center;
+    
+}
+
+
+
+
+.header{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    padding: 2rem 4%;
+    background: rgba(0, 0, 0, 0,8);
+    backdrop-filter: blur(1px);
+    display: flex;
+    transition: 0.5s;
+    justify-content: space-between;
+    align-items: center;
+    opacity: 0%; transform: translateY(40px);
+    animation: time-in 1s ease-in-out forwards;
+    animation-delay: 2s;
+    z-index: 1000;
+
+
+}
+
+header.stiky{
+    position: fixed;
+    width: 100%;
+    top: -80px;
+    left: 0;
+    padding: 0rem 6%;
+    background: rgba(0, 0, 0, 0,8);
+    backdrop-filter: blur(10px);
+    justify-content: space-between;
+    align-items: center;
+    transform: translateY(-10px);
+}
+
+.header video{
+    position: relative;
+    height: 6rem;
+    width: 6rem;
+    justify-content: center;
+    align-items: center;
+    margin-left: 2rem;
+    transition: 0.5s;
+    border: 2px solid var(--warna-teks);
+    box-shadow: 0 0 25px var(--warna-utama) ;
+    border-radius: 50%;
+    animation: time-in 1s ease-in-out forwards;
+    animation-delay: 4s;
+}
+
+
+#menu-icon{
+    font-size: 3.6rem;
+    color: var(--warna-utama);
+    display:none;
+    cursor: pointer;
+}
+
+.web-interactive{
+    position: relative;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    transform: translateY(30rem);
+    font-size: 6rem;
+
+
+
+}
+
+.web, .interactive {
+    position: relative;
+    margin: 2rem;
+}
+
+.web .w{
+    color: red;
+    opacity: 0%;
+    display: inline-block;
+    animation: web 2s ease forwards;
+    animation-delay: 1s;
+    transform: translate();
+}
+.web .e{
+    color: #ff087f;
+    opacity: 0%;
+    display: inline-block;
+    animation: web 2s ease forwards;
+    animation-delay: 1.2s;
+    transform: translate();
+}
+
+.web .b{
+    color: rgb(221, 0, 255);
+    opacity: 0%;
+    display: inline-block;
+    animation: web 2s ease forwards;
+    animation-delay: 1.3s;
+    transform: translate();
+}
+
+.interactive .i{
+    color: rgb(221, 0, 255);
+    opacity: 0%;
+    display: inline-block;
+    animation: web 3s ease forwards;
+    animation-delay: 1.5s;
+    transform: translate();
+    
+}
+.interactive .n{
+    color: rgb(221, 0, 255);
+    opacity: 0%;
+    display: inline-block;
+    animation: web 3s ease forwards;
+    animation-delay: 1.6s;
+    transform: translate();
+
+}
+.interactive .t{
+    color: rgb(221, 0, 255);
+    opacity: 0%;
+    display: inline-block;
+    animation: web 3s ease forwards;
+    animation-delay: 1.7s;
+    transform: translate();
+
+}
+.interactive .e{
+    color: rgb(221, 0, 255);
+    opacity: 0%;
+    display: inline-block;
+    animation: web 3s ease forwards;
+    animation-delay: 1.8s;
+    transform: translate();
+
+}
+.interactive .r{
+    color: rgb(221, 0, 255);
+    opacity: 0%;
+    display: inline-block;
+    animation: web 3s ease forwards;
+    animation-delay: 1.9s;
+    transform: translate();
+    
+
+}
+.interactive .a{
+    color: rgb(221, 0, 255);
+    opacity: 0%;
+    display: inline-block;
+    animation: web 3s ease forwards;
+    animation-delay: 2s;
+    transform: translate();
+
+}
+.interactive .c{
+    color: rgb(221, 0, 255);
+    opacity: 0%;
+    display: inline-block;
+    animation: web 3s ease forwards;
+    animation-delay: 2.1s;
+    transform: translate();
+
+}
+.interactive .t{
+    color: rgb(221, 0, 255);
+    opacity: 0%;
+    display: inline-block;
+    animation: web 3s ease forwards;
+    animation-delay: 2.2s;
+    transform: translate();
+
+}
+.interactive .i{
+    color: rgb(221, 0, 255);
+    opacity: 0%;
+    display: inline-block;
+    animation: web 3s ease forwards;
+    animation-delay: 2.3s;
+    transform: translate();
+
+}
+.interactive .v{
+    color: rgb(221, 0, 255);
+    opacity: 0%;
+    display: inline-block;
+    animation: web 3s ease forwards;
+    animation-delay: 2.4s;
+    transform: translate();
+
+}
+.interactive .e{
+    color: rgb(221, 0, 255);
+    opacity: 0%;
+    display: inline-block;
+    animation: web 3s ease forwards;
+    animation-delay: 2.5s;
+    transform: translate();
+
+}
+
+@keyframes web{
+    0%,30%{transform: rotateX(200deg); }
+    30%,40%{opacity: 100%;}
+    30%, 50%{transform: translateY(-5rem);}
+    50%,100%{transform: translate(0);opacity: 100%;}
+}
+
+
+.logo{
+    font-size: 3rem;
+    color: var(--warna-teks);
+    font-weight: 800;
+    cursor: pointer;
+    transition: 0.5s;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo:hover{
+    transform: translateX(4rem);
+}
+
+.logo span{
+    color: var(--warna-utama);
+}
+
+.navbar a{
+    font-size: 1.8rem;
+    color: var(--warna-teks);
+    margin-left: 4rem;
+    font-weight: 500;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 20%;
+    transition: 1s ease-in-out;
+}
+
+.navbar a:hover{
+    border: 1px solid var(--warna-utama);
+    background: var(--warna-teks);
+    color: var(--warna-background);
+    transition: 1s ease-in-out;
+}
+
+::-webkit-scrollbar{
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb{
+    background: var(--warna-utama);
+    border-radius: 100%;
+}
+
+::-webkit-scrollbar-track{
+    background-color: var(--warna-background);
+}
+
+
+.box{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 10;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-end;
+    z-index: -8;
+  
+}
+
+.box .group{
+    position: relative;
+    transform: rotate(-30deg);
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 1rem;
+    opacity: 0%;
+    animation: in 1s  forwards;
+}
+
+.iconContainer{
+    display: flex;
+    gap: 3rem;
+    width: 200vw;
+    animation: animate1 80s linear infinite;
+}
+
+@keyframes animate1 {
+    0%,100%{
+        transform: translateX(-200rem);
+    }
+    50%{
+        transform: translateX(0rem);
+    }
+}
+
+.iconContainer:nth-child(even){
+    animation: animate2 80s linear infinite;
+}
+
+@keyframes animate2 {
+    0%,100%{
+        transform: translateX(0rem);
+    }
+    50%{
+        transform: translateX(-200rem);
+    }
+}
+
+.iconContainer i {
+    cursor: default;
+    user-select: none;
+    transition: 0.8s;
+    opacity: 0.35;
+    font-size: 5rem;
+    color: transparent;
+    -webkit-text-stroke: 1px transparent;
+
+}
+
+.iconContainer i:hover{
+    color: var(--warna-utama);
+    transition: 0s;
+    -webkit-text-stroke: 1px transparent;
+    opacity: 1;
+    text-shadow: 0 0 120px var(--warna-utama);
+}
+
+
+
+.footer{
+    /* background-color: var(--warna-background); */
+    transform: translateY(70rem);
+    bottom: 0;
+}
+
+.footer .sosial-icon{
+    text-align: center;
+}
+
+.footer ul{
+    text-align: center;
+    font-size: 1.8rem;
+}
+
+.footer ul li{
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.footer ul li a{
+    color: white;
+    border-bottom: 3px solid transparent;
+    transition: 0.3s ease-in-out;
+}
+
+.footer ul li a:hover{
+    border-bottom: 3px solid var(--warna-utama);
+}
+
+.footer .coppyright{
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+
+@media(max-width:1024px){
+
+
+
+    #menu-icon{
+        display: block;
+    }
+
+
+/* navbar section style */
+
+    .navbar{
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 50%;
+        padding: 1rem 3rem;
+        background-color: rgba(0, 0, 0, 0.8);
+        border-left: 2px solid var(--warna-utama);
+        border-bottom: 2px solid var(--warna-utama);
+        border-bottom-left-radius: 2rem;
+        transition-duration: 1s;
+    }
+
+    .web-interactive{
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+        text-size-adjust: 1rem;
+        gap: 0.1rem;
+        animation: scale 1s linear forwards;
+        display: flex;
+    }
+
+  
+    
+    .navbar a{
+        display: block;
+        font-size: 2rem;
+        margin: 3rem 0;
+        color: var(--warna-teks);
+    }
+    
+    .navbar.active{
+        display: block;
+    }
+
+
+
+@keyframes p{
+    100%{
+        opacity: 50%;
+    }
+}
+}
+                                                                                                                                                    
+@media (prefers-reduced-motion: no-preference){
+    section{
+        min-height: 100vh;
+        padding: 10rem 12%;
+       
+    }
+}
+
+    @keyframes scale{
+        to{font-size: 3rem; flex-wrap: nowrap;}
+        
+    }
+
+    @keyframes slide-in{
+        to {scale: 1; opacity: 100%; transform: translateX(0px);}
+    }
+
+    @keyframes  fade-in{
+        to {scale: 1; opacity: 100%; transform: translateY(0px);}
+    }
+
+    @keyframes  fade-out{
+        0% {scale: 1; opacity: 100%; transform: translateY(0px);}
+
+        100% { scale: .2; opacity: 0%;}
+    }
+
+    @keyframes time-in{
+        to {scale: 1; opacity: 100%; transform: translateY(0px);}   
+    }
+
+    @keyframes animate{
+        0%{
+            transform: rotate(0deg);
+
+        }
+        100%{
+            transform: rotate(360deg);
+        
+        }
+    }
+
+    @keyframes in {
+        to {opacity: 100%;} 
+
+    }
+        
