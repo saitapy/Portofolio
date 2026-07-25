@@ -693,12 +693,10 @@ header.stiky{
 @media (prefers-reduced-motion: no-preference){
     section{
         min-height: 100vh;
-        padding: 2rem 12%;
-
-        
+        padding: 2rem 12%; }     
 
        
-    }
+ }
     @keyframes slide-in{
         to {scale: 1; opacity: 100%; transform: translateX(0px);}
     }
@@ -732,5 +730,4 @@ header.stiky{
         to {opacity: 0%;} 
 
     }
-        
-    }
+
