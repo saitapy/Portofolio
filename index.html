@@ -1,57 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wellcome Everyone</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="/css/style-index.css">
-
-</head>   
-    <header><h1>Wellcome Everyone</h1></header>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome Everyone</title>
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="/css/style-index.css">
+  <link rel="icon" href="data:,">
+</head>
 <body>
+    <!-- PRELOADER VIDEO SCREEN -->
+    <div id="video-preloader">
+    <!-- Ganti 'video/loading-video.mp4' dengan jalur file video kamu sendiri bray -->
+    <video autoplay muted playsinline id="loading-video">
+        <source src="video/SG Logo_1.mp4" type="video/mp4">
+        Browser kamu tidak mendukung pemutaran video.
+    </video>
+    </div>
 
-    
-    <div class="container">
-        <div class="card">
-            <div class="logo">
-                <span class="circle circle1"></span>
-                <span class="circle circle2"></span>
-                <span class="circle circle3"></span>
-                <span class="circle circle4"></span>
-                <span class="circle circle5">
-                    <i class="fa-solid fa-paper-plane"></i>
-                </span>
-            </div>
-            <div class="glass">
-                <div class="content">
-                    <h1>Saitapy</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam corporis expedita, sapiente</p>
-                </div>
+  <header>
+    <h1>Welcome Everyone</h1>
+  </header>
+ 
+  <div class="container">
+    <div class="card">
+      <div class="glass">
+        <!-- Logo lingkaran dipindah ke dalam glass agar efek tumpukan 3D menyatu sempurna -->
+        <div class="logo">
+          <span class="circle circle1"></span>
+          <span class="circle circle2"></span>
+          <span class="circle circle3"></span>
+          <span class="circle circle4"></span>
+          <span class="circle circle5">
+            <i class="fa-solid fa-paper-plane"></i>
+          </span>
+        </div>
 
-                <div class="footer">
-                    <div class="sosial">
-                        <span class="sosial-icons">
-                            <i class="fa-solid fa-linkedin"></i>
-                        </span>
-                        <span class="sosial-icons">
-                            <i class="fa-solid fa-behance"></i>
-                        </span>
-                    </div>
+        <div class="content">
+          <h1>Saitapy</h1>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam corporis expedita, sapiente.</p>
+        </div>
 
-                    <div class="link">
-                        <a href="/Section/home.html" >Raed More <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                    </div>
-                </div>
+        <div class="footer">
+          <div class="sosial">
+            <span class="sosial-icons">
+              <i class="fa-brands fa-linkedin-in"></i>
+            </span>
+            <span class="sosial-icons">
+              <i class="fa-brands fa-behance"></i>
+            </span>
+          </div>
+            <div class="link">
+                <a href="/Section/home.html" class="btn-masuk">
+                Masuk <i class="fa-solid fa-arrow-right"></i>
+                </a>
             </div>
 
         </div>
+      </div>
     </div>
+  </div>
+
+    <script>
+   const preloader = document.getElementById('video-preloader');
+    const video = document.getElementById('loading-video');
+    const card = document.querySelector('.card');
+
+    // 1. LOGIKA UTAMA PRELOADER VIDEO
+    window.addEventListener('load', function() {
+      setTimeout(() => {
+        preloader.classList.add('fade-out');
+        
+        // Setelah preloader hilang, minta izin sensor gravitasi khusus pengguna iOS/iPhone bray
+        setTimeout(() => {
+          video.pause();
+          aktifkanSensorGravitasi();
+        }, 1500); 
+        
+      }, 12000); 
+    });
+
+    // 2. LOGIKA SENSOR GRAVITASI / PARALLAX TILT UNTUK HP
+    function aktifkanSensorGravitasi() {
+      // Deteksi apakah perangkat mendukung API orientasi bray
+      if (window.DeviceOrientationEvent) {
+        
+        // Khusus iOS 13+ (iPhone) membutuhkan izin manual dari ketukan pengguna
+        if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+          // Kita buat agar saat pengguna pertama kali menyentuh layar setelah loading, izin sensor langsung muncul
+          document.body.addEventListener('click', function memintaIzin() {
+            DeviceOrientationEvent.requestPermission()
+              .then(permissionState => {
+                if (permissionState === 'granted') {
+                  window.addEventListener('deviceorientation', handleTilt);
+                }
+              })
+              .catch(console.error);
+            // Hapus listener klik agar tidak meminta izin berkali-kali bray
+            document.body.removeEventListener('click', memintaIzin);
+          });
+        } else {
+          // Untuk Android biasanya langsung aktif tanpa pop-up izin manual
+          window.addEventListener('deviceorientation', handleTilt);
+        }
+      }
+    }
+
+    // Fungsi pemroses kemiringan HP bray
+    function handleTilt(event) {
+      // Hanya aktifkan jika lebar layar di bawah ukuran HP (mobile mode)
+      if (window.innerWidth <= 480) {
+        // beta: kemiringan depan-belakang (X-axis), gamma: kemiringan kiri-kanan (Y-axis)
+        let beta = event.beta;   // Nilai normal saat memegang HP santai berkisar 45 sampai 75
+        let gamma = event.gamma; // Nilai berkisar -90 sampai 90
+
+        // Normalisasi sudut genggaman HP biar kalau dipegang posisi santai (agak dongak), kartunya lurus di tengah
+        let tiltX = beta - 60; // Mengurangi nilai standar posisi dongak hp bray
+        let tiltY = gamma;
+
+        // Batasi sudut rotasi maksimal 15 derajat agar animasi kartu tidak berputar ekstrim/pusing
+        tiltX = Math.max(Math.min(tiltX, 15), -15);
+        tiltY = Math.max(Math.min(tiltY, 15), -15);
+
+        // Terapkan efek rotasi 3D ke kartu sesuai sensor gravitasi fisik HP lu bray!
+        // Sumbu X di CSS memutar secara vertikal (dikontrol oleh kemiringan depan-belakang/tiltX)
+        // Sumbu Y di CSS memutar secara horizontal (dikontrol oleh kemiringan kiri-kanan/tiltY)
+        card.style.transform = `rotateX(${-tiltX}deg) rotateY(${tiltY}deg)`;
+        card.style.transition = "transform 0.1s ease-out"; // Transisi super cepat agar responsif real-time tanpa delay
+      }
+    }
+
+    // Reset posisi kartu jika layar di-resize kembali ke mode desktop bray
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 480) {
+        card.style.transform = "";
+        card.style.transition = "";
+      }
+    });
+</script>
 
 
 </body>
 </html>
-
-<table>
-    <p>asfdgaccasgvav</p>
-</table>
