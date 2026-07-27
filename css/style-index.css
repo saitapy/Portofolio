@@ -1,228 +1,289 @@
-*{
-    margin: 0;padding: 0;box-sizing: border-box;
-}
-
-:root{
-    --prime-color: #ffffff;
-}
-
-
-body{
-    min-height: auto;
-    display: flex;
-    background: url(/image/Black\,-Leaf\,-Darkness\,-Pattern\,-Branch\,-Botany-in-2019-.jpg);
-}
-
-.container{
-    margin: 350px;
-    width: 300px;
-    height: 300px;
-    perspective: 1000px;
-    animation: fade-in 1s ease-in-out forwards;
-    animation-delay: 2s;
-    justify-content: center;
-    align-items: center;
-}
-
-.card{
-    height: 100%;
-    border-radius: 50px;
-    background: linear-gradient(135deg, #686a69, #030403);
-    transition: 0.5s ease-in-out;
-    transform-style: preserve-3d;
-    box-shadow: 
-    #ffffff00 40px 50px 25px,
-    #c0c0c033 0px 25px 25px;
-}
-
-.glass{
-    transform-style: preserve-3d;
-    position: absolute;
-    inset: 8px;
-    background: linear-gradient(#ffffff59, #262626d0);
-    border-radius: 55px;
-    border-top-right-radius: 50%;
-    border-left: 1px solid white;
-    border-left: 1px solid white;
-    transition: 0.5s ease-in-out;
-    transform: translate3d(0, 0, 25px);
-}
-
-.logo{
-    position: absolute;
-    right: 0;
-    top: 0;
-    transform-style: preserve-3d;
-}
-
-.logo .circle{
-    position: absolute;
-    aspect-ratio: 1;
-    border-radius: 50%;
-    background: #00000033;
-    top: 0;
-    right: 0;
-    box-shadow: #ffffff33 -10px 10px 20px;
-    transition: 0.5s ease-in-out;
-    backdrop-filter: blur(5px);
-}
-
-.logo .circle1{
-    width: 170px;
-    transform: translate3d(0, 0, 20px);
-    top: 8px;
-    right: 8px;
-    transition-delay: 0.0s;
-}
-
-.logo .circle2{
-    width: 140px;
-    transform: translate3d(0, 0, 40px);
-    top: 10px;
-    right: 10px;
-    transition-delay: 0.2s;
-}
-.logo .circle3{
-    width: 110px;
-    transform: translate3d(0, 0, 60px);
-    top: 17px;
-    right: 17px;
-    transition-delay: 0.4s;
-}
-.logo .circle4{
-    width: 80px;
-    transform: translate3d(0, 0, 80px);
-    top: 23px;
-    right: 23px;
-    transition-delay: 0.6s;
-}
-.logo .circle5{
-    width: 50px;
-    transform: translate3d(0, 0, 100px);
-    top: 30px;
-    right: 30px;
-    transition-delay: 0.8s;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: var(--prime-color);
-}
-
-.content{
-    padding: 130px 60px 0 30px;
-}
-
-.content h1{
-    color: #d2d2d2;
-    font-weight: 900;
-    font-size: 20px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
-
-.content p{
-    margin-top: 10px;
-    color: #d2d2d2;
-    font-size: 15px;
-}
-
-.footer{
-    transform-style: preserve-3d;
-    position: absolute;
-    bottom: 20px;
-    left: 30px;
-    right: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.footer .link a{
-    transition: 0.2s ease-in-out;
-    font-size: 14px;
-    color: #d2d2d2;
-    cursor: pointer;
-    text-decoration: none;
-   
-    
-}
-
-.footer .link:hover {
-    transform: translate3d(0, 0, 10px);
-    color: var(--prime-color);
-    transition: 0.2s ease-in-out;
-}
-
-.footer .sosial{
-    transform-style: preserve-3d;
-    display: flex;
-    gap: 10px;
-}
-
-.footer .sosial .sosial-icons{
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-    background: white;
-    color: var(--prime-color);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    box-shadow: #ffffff80 7px 7px 5px;
-    transition: 0.5s;
-}
-
-.footer .sosial .sosial-icons:nth-child(1){
-    transition: 0.2s ease-in-out 0.2s;
-}
-
-.footer .sosial .sosial-icons:nth-child(2){
-    transition: 0.2s ease-in-out 0.4s;
-}
-
-.footer .sosial .sosial-icons:nth-child(3){
-    transition: 0.2s ease-in-out 0.6s;
-}
-
-/* hover effect */
-
-.container:hover .card{
-    transform: rotate3d(1, 1, 0, 30deg);
-    box-shadow: 
-    #ffffff1b 30px 50px 25px,
-    #ffffffba 0px 25px 30px;
-}
-
-.container:hover .card .footer .sosial .sosial-icons{
-    transform: translate3d(0, 0, 20px);
-    box-shadow: #ffffff2b -5px 20px 10px;
-}
-
-.container:hover .card .logo .circle2{
-    transform: translate3d(0, 0, 60px);
-}
-
-.container:hover .card .logo .circle3{
-    transform: translate3d(0, 0, 80px);
-}
-
-.container:hover .card .logo .circle4{
-    transform: translate3d(0, 0, 100px);
-}
-
-.container:hover .card .logo .circle5{
-    transform: translate3d(0, 0, 120px);
-}
-
-@keyframes fade-in {
-
-}
-
-@media(max-width:1024px) {
-    .container{
-        display: flex;
+ /* RESET & BASE STYLES */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
     
+    :root {
+      --prime-color: #ffffff;
+      /* Mengubah warna teks sosial media menjadi gelap agar ikon putih bawaan terlihat */
+      --social-icon-color: #262626; 
+    }
+    
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column; /* Agar header berada di atas container */
+      justify-content: center;
+      align-items: center;
+      background: #1a1a1a; /* Background fallback jika gambar tidak dimuat */
+      background: url('/image/Black\,-Leaf\,-Darkness\,-Pattern\,-Branch\,-Botany-in-2019-.jpg');
+      background-size: cover;
+      background-position: center;
+      padding: 20px;
+      overflow-x: hidden;
+    }
+
+    /* GAYA PRELOADER VIDEO SATU LAYAR PENUH */
+   /* PEMBUNGKUS PRELOADER VIDEO */
+#video-preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000000; /* Latar hitam untuk mengisi ruang kosong bray */
+  z-index: 99999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 1.5s ease-in-out, visibility 1.5s ease-in-out;
+  overflow: hidden;
 }
+
+/* KHUSUS DESKTOP: VIDEO TAMPIL UTUH TANPA TERPOTONG */
+#video-preloader video {
+  width: 100%;
+  height: 100%;
+  scale: 316%;
+  object-fit: contain; /* Menampilkan video 1920x1080 secara utuh tanpa kepotong bray */
+  object-position: center;
+}
+
+    /* KELAS CSS UNTUK MENYEMBUNYIKAN LAYAR LOADING DENGAN EFEK MEMUDAR */
+    #video-preloader.fade-out {
+    opacity: 0;
+    visibility: hidden;
+    }
+
+    header h1 {
+      color: #ffffff;
+      font-family: Arial, sans-serif;
+      margin-bottom: 20px;
+      text-align: center;
+      font-size: 2rem;
+    }
+    
+    /* LAYOUT CONTAINER */
+    .container {
+      width: 100%;
+      max-width: 320px; /* Batas lebar maksimal kartu bray */
+      height: 400px; /* Menambah tinggi agar konten tidak sesak */
+      perspective: 1000px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    /* CARD STYLES */
+    .card {
+      width: 100%;
+      height: 100%;
+      border-radius: 50px;
+      background: linear-gradient(135deg, #686a69, #030403);
+      transition: 0.5s ease-in-out;
+      transform-style: preserve-3d;
+      box-shadow: #ffffff00 40px 50px 25px, #c0c0c033 0px 25px 25px;
+      position: relative;
+    }
+    
+    .glass {
+      transform-style: preserve-3d;
+      position: absolute;
+      inset: 8px;
+      background: linear-gradient(#ffffff59, #262626d0);
+      border-radius: 42px; /* Disesuaikan dengan inset */
+      border-top-right-radius: 50%;
+      border-left: 1px solid white;
+      transition: 0.5s ease-in-out;
+      transform: translate3d(0, 0, 25px);
+    }
+    
+    /* LOGO & LAYERED CIRCLES */
+    .logo {
+      position: absolute;
+      right: 0;
+      top: 0;
+      transform-style: preserve-3d;
+      width: 170px;
+      height: 170px;
+    }
+    
+    .logo .circle {
+      position: absolute;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: #00000033;
+      top: 0;
+      right: 0;
+      box-shadow: #ffffff33 -10px 10px 20px;
+      transition: 0.5s ease-in-out;
+      backdrop-filter: blur(5px);
+    }
+    
+    .logo .circle1 { width: 170px; transform: translate3d(0, 0, 20px); top: 8px; right: 8px; transition-delay: 0.0s; }
+    .logo .circle2 { width: 140px; transform: translate3d(0, 0, 40px); top: 10px; right: 10px; transition-delay: 0.1s; }
+    .logo .circle3 { width: 110px; transform: translate3d(0, 0, 60px); top: 17px; right: 17px; transition-delay: 0.2s; }
+    .logo .circle4 { width: 80px; transform: translate3d(0, 0, 80px); top: 23px; right: 23px; transition-delay: 0.3s; }
+    .logo .circle5 { 
+      width: 50px; 
+      transform: translate3d(0, 0, 100px); 
+      top: 30px; 
+      right: 30px; 
+      transition-delay: 0.4s;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: var(--prime-color);
+    }
+    
+    /* CONTENT */
+    .content {
+      padding: 160px 30px 0 30px; /* Menyesuaikan padding atas agar tidak tertabrak logo */
+    }
+    
+    .content h1 {
+      color: #d2d2d2;
+      font-weight: 900;
+      font-size: 24px;
+      font-family: 'Trebuchet MS', sans-serif;
+    }
+    
+    .content p {
+      margin-top: 10px;
+      color: #d2d2d2;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+    
+    /* FOOTER Elements */
+    .footer {
+      transform-style: preserve-3d;
+      position: absolute;
+      bottom: 25px;
+      left: 30px;
+      right: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    
+    .footer .link .btn-masuk {
+        display: inline-flex; /* Mengubah ke flex agar teks dan ikon menyatu solid */
+        align-items: center;  /* Memastikan teks dan ikon sejajar vertikal */
+        justify-content: center;
+        gap: 8px; 
+        background: var(--prime-color); 
+        color: #262626; 
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 14px;
+        font-weight: bold;
+        text-decoration: none;
+        cursor: pointer; /* Memaksa kursor tetap berbentuk tangan di seluruh area tombol */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease-in-out;
+        position: relative;
+        z-index: 10;
+    }
+    
+    .footer .link .btn-masuk:hover {
+        transform: translate3d(0, -3px, 15px); /* Membuat tombol sedikit melayang keluar saat di-hover */
+        background: #d2d2d2; /* Warna tombol sedikit menggelap saat disentuh */
+        box-shadow: 0 6px 15px rgba(255, 255, 255, 0.4);
+    }
+    
+    .footer .link .btn-masuk:hover i {
+        transform: translateX(3px);
+        transition: transform 0.2s ease;
+    }
+
+    .footer .sosial {
+      transform-style: preserve-3d;
+      display: flex;
+      gap: 10px;
+    }
+    
+    .footer .sosial .sosial-icons {
+      width: 35px;
+      height: 35px;
+      background: white;
+      color: var(--social-icon-color);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: #ffffff80 4px 4px 5px;
+      transition: 0.5s;
+    }
+    
+    .footer .sosial .sosial-icons:nth-child(1) { transition: 0.2s ease-in-out 0.2s; }
+    .footer .sosial .sosial-icons:nth-child(2) { transition: 0.2s ease-in-out 0.4s; }
+    
+    /* HOVER 3D EFFECTS */
+    .container:hover .card {
+      transform: rotate3d(1, 1, 0, 25deg);
+      box-shadow: #ffffff1b 30px 50px 25px, #ffffffba 0px 25px 30px;
+    }
+    
+    .container:hover .card .footer .sosial .sosial-icons {
+      transform: translate3d(0, 0, 20px);
+      box-shadow: #ffffff2b -5px 20px 10px;
+    }
+    
+    .container:hover .card .logo .circle2 { transform: translate3d(0, -20px, 60px); }
+    .container:hover .card .logo .circle3 { transform: translate3d(0, -40px, 80px); }
+    .container:hover .card .logo .circle4 { transform: translate3d(0, -60px, 100px); }
+    .container:hover .card .logo .circle5 { transform: translate3d(0, -80px, 120px); }
+
+    /* RESPONSIVE LAYOUT (MOBILE OPTIMIZATION) */
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 1.5rem;
+      }
+      .container:hover .card {
+    transform: rotate3d(1, 1, 0, 5deg); /* Dikurangi drastis khusus HP bray */
+  }
+    #video-preloader video {
+    object-fit: cover;
+    scale:100% /* Di HP wajib cover agar layar HP yang tinggi tidak menyisakan kotak hitam kosong */
+     }
+
+  .container {
+    max-width: 290px;
+    height: 380px;
+  }
+  
+  .content {
+    padding: 140px 20px 0 20px;
+  }
+  
+  .content h1 {
+    font-size: 20px;
+  }
+  
+  .content p {
+    font-size: 13px;
+  }
+  
+  .footer {
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+  }
+
+  /* 2. Solusi Utama: Dorong posisi tombol paling depan di layar HP */
+  .footer .link .btn-masuk {
+    position: relative;
+    z-index: 9999 !important; /* Memaksa berada di layer teratas */
+    transform: translate3d(0, 0, 150px) !important; /* Didorong maju melompati efek .glass */
+    touch-action: manipulation; /* Menghilangkan delay ketukan di mobile browser */
+  }
+  
+  /* Memastikan elemen logo lingkaran tidak memblokir ketukan */
+  .logo {
+    pointer-events: none; 
+  }
+    }
