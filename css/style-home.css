@@ -12,7 +12,7 @@
 
 html{
     font-size: 60%;
-    overflow: scroll(smooth);
+    
 
 }
 
@@ -23,46 +23,47 @@ html{
     --warna-utama: #ff9100;
 }
 
-body{
+body {
     background: url(/image/Paranoid\ Android\ -\ Sweet.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Memastikan background tidak ikut bergeser kaku pas di-scroll */
     color: var(--warna-teks);
-    justify-content: center;
-    align-items: center;
-    
+    overflow-x: hidden;
 }
 
 
-.header{
+.header {
     position: fixed;
     width: 100%;
     top: 0;
     left: 0;
     padding: 2rem 4%;
-    background: rgba(0, 0, 0, 0,8);
+    background: rgba(0, 0, 0, 0.8); /* Perbaikan dari koma (0,8) ke titik (0.8) */
     backdrop-filter: blur(10px);
     display: flex;
     transition: 0.5s;
     justify-content: space-between;
     align-items: center;
-    opacity: 0%; transform: translateY(40px);
+    opacity: 0%; 
+    transform: translateY(40px);
     animation: time-in 1s ease-in-out forwards;
     animation-delay: 2s;
     z-index: 100;
-
-
 }
 
-header.stiky{
+header.stiky {
     position: fixed;
     width: 100%;
-    top: -80px;
+    top: 0; /* Ubah dari -80px agar saat di-scroll navigasi tidak menghilang ke atas */
     left: 0;
-    padding: 0rem 6%;
-    background: rgba(0, 0, 0, 0,8);
+    padding: 1.5rem 6%; /* Sedikit diperkecil ukurannya saat sticky agar estetik */
+    background: rgba(0, 0, 0, 0.9); /* Perbaikan titik desimal */
     backdrop-filter: blur(10px);
     justify-content: space-between;
     align-items: center;
-    transform: translateY(-10px);
+    transition: 0.4s;
 }
 
 #menu-icon{
@@ -99,48 +100,6 @@ header.stiky{
     color: var(--warna-utama);
 }
 
-.home-content span{
-    text-wrap: nowrap;
-    position: relative;
-    color: black;
-    animation: animate-text 12s infinite;
-    animation-delay: calc(-4s * var(--i));
-}
-
-@keyframes animate-text{
-    0%{
-        display: inline-block;
-    }
-    33.33%, 100%{
-        display: none;
-    }
-}
-
-@keyframes animate-text2{
-    0%, 10%, 100%{
-        width: 0;
-    }
-
-    70%, 90%{
-        width: 100%;
-    }
-}
-
-.home-content span::before{
-    content: attr(data-text);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    overflow: hidden;
-    color: var(--warna-utama);
-    border-right: 4px solid var(--warna-utama);
-    filter: drop-shadow(0 0 6px)
-            drop-shadow(0 0 25px);
-    animation: animate-text2 4s linear infinite;
-}
-
-
 .header video{
     position: relative;
     height: 6rem;
@@ -155,8 +114,6 @@ header.stiky{
     animation: time-in 1s ease-in-out forwards;
     animation-delay: 4s;
 }
-
-
 
 .navbar a{
     font-size: 1.8rem;
@@ -190,14 +147,13 @@ header.stiky{
 
 
 
-.home{
-    display: flex;
-    flex: content;
-    align-items: center;
-    justify-content: center;
-    gap: 15rem;
-    min-height: 100vh;
-    /* background: url(/image/Paranoid\ Android\ -\ Sweet.png); */
+.home {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ gap: 10rem; /* Diperkecil dari 30rem agar tidak terlalu renggang dan meluber keluar layar */
+ min-height: 100vh;
+ padding: 0 9%;
 }
 
 .home-content{
@@ -207,9 +163,7 @@ header.stiky{
     text-align: right;
     opacity: 0%; transform: translateY(-20px);
     animation: time-in 1s ease-in-out forwards;
-    animation-delay: 2s; 
-   
-
+    animation-delay: 2s;
 }
 
 
@@ -235,16 +189,19 @@ header.stiky{
     line-height: 1.8;
 }
 
+.home-image{
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
 .home-image img{
     width: 25vw;
     border-radius: 50%;
-    opacity: 70%;
     box-shadow: 0 0 25px var(--warna-utama);
     opacity: 0%; transform: translateX(20px);
     animation: time-in 1s ease-in-out forwards;
     animation-delay: 1s;
     transition: 0.6s;
-
 }
 
 .home-image img:hover{
@@ -258,6 +215,30 @@ header.stiky{
     
 }
 
+/* 1. ELEMEN TEKS UTAMA (Murni teks, tidak punya animasi kedip) */
+.typing-text {
+    color: var(--warna-utama) !important;
+    background: transparent !important;
+    font-weight: 700;
+    display: inline-block;
+    position: relative;
+    /* Hanya glow teks bawaan lu yang aman */
+    text-shadow: 0 0 10px var(--warna-utama),
+                 0 0 20px var(--warna-utama);
+}
+
+.typing-text::after {
+    content: '';
+    position: absolute;
+    right: -8px; /* Jarak pas di ujung huruf terakhir */
+    top: 10%;
+    width: 4px; /* Lebar kursor garis tegak */
+    height: 80%; /* Tinggi kursor menyesuaikan huruf */
+    background-color: var(--warna-utama);
+    
+    /* Jalankan animasi kedip HANYA pada kursor ini saja bray! */
+    animation: blinkCursor 0.8s step-end infinite;
+}
 
 .sosial-icon a{
     display: inline-flex;
@@ -330,41 +311,59 @@ header.stiky{
     color: var(--warna-utama);
 }
 
-.about{
+/* TAMPILAN DESKTOP ABOUT SECTION */
+.about {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 10rem;
-    /* background-color: var(--warna-background-kedua); */
+    min-height: 100vh;
+    padding: 0 9%;
     opacity: 0%;
     animation: time-in 1s ease-in-out forwards;
     animation-delay: 1s;
 }
 
-.about-image img{
+.about-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Tombol ikut berjejer rapat ke kiri bray */
+    text-align: left;        /* Teks rata kiri rapi */
+    width: 50%;
+}
+
+.about-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+}
+
+.about-image img {
     width: 25vw;
     border-radius: 50%;
     opacity: 70%;
-    box-shadow: 0 0 10px var(--warna-utama);
+    box-shadow: 0 0 25px var(--warna-utama);
     transition: 0.4s ease-in-out;
-    scale: .2; opacity: 0%;
+    scale: .2; 
+    opacity: 0%;
     animation: fade-in linear forwards;
     animation-timeline: view();
     animation-range: 70px 400px;
     animation-delay: 8s;
 }
 
-.about-image img:hover{
+.about-image img:hover {
     opacity: 100%;
+    transform: scale(1.03);
     box-shadow: 0 0 25px var(--warna-utama),
-                0 0 50px brown,
-                0 0 100px red;
+                0 0 50px var(--warna-utama);
 }
 
 .about-content h2{
     cursor: default;
     font-size: 6rem;
-    text-align: left;
+    margin-bottom: 2rem;
     scale: .9; opacity: 0%;
     animation: fade-in linear forwards;
     animation-timeline: view();
@@ -376,6 +375,7 @@ header.stiky{
 .about-content p{
     cursor: default;
     font-size: 1.5rem;
+    line-height: 1.8;
     opacity: 0%; transform: translateX(50px);
     animation: fade-in linear forwards;
     animation-timeline: view();
@@ -435,12 +435,14 @@ header.stiky{
 
 .portofolio-box {
     margin: 0 auto;
-    display: grid;
+    display: flex; /* Diubah ke flex agar penataan info di dalamnya lebih konsisten */
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: var(--warna-utama);
-    height: 500px;
-    width: 400px;
+    min-height: 450px; /* Menggunakan min-height agar tinggi kotak menyesuaikan isi teks */
+    width: 100%; /* Fleksibel mengikuti lebar grid container */
+    max-width: 380px; /* Batas maksimal lebar kotak saat di desktop monitor */
     border-radius: 3rem;
     cursor: pointer;
     border: 5px solid transparent;
@@ -451,6 +453,7 @@ header.stiky{
     animation-range: 100px 400px;
     animation-delay: 8s;
 }
+
 
 .portofolio-box a{
     color: black;
@@ -589,48 +592,79 @@ header.stiky{
     font-size: 14px;
 }
 
+/* Kelas Global untuk Efek Muncul Halus Saat Scroll */
+.reveal-on-scroll {
+ opacity: 0;
+ transform: translateY(50px);
+ transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Saat elemen masuk ke layar, kelas ini akan dipicu */
+.reveal-on-scroll.show {
+ opacity: 1;
+ transform: translateY(0);
+}
 
 
-@media(max-width:1024px){
 
-
-
-    #menu-icon{
+@media(max-width:768px){
+    #menu-icon {
         display: block;
+        font-size: 3.6rem;
+        color: var(--warna-teks); 
+        cursor: pointer;
+        z-index: 101;
+        transition: 0.3s ease;
     }
 
+     /* Efek opsional: Membuat ikon berputar sedikit saat berubah jadi X biar keren */
+    #menu-icon i {
+        transition: transform 0.3s ease;
+    }
+    
+    /* Saat menu aktif, ikon X akan tetap diam di posisi semestinya */
+    .navbar.active ~ #menu-icon i {
+        transform: rotate(90deg);
+    }
 
 /* navbar section style */
 
-    .navbar{
-        display: none;
+    .navbar {
         position: absolute;
         top: 100%;
-        right: 1px;
-        width: 100%;
-        height: 85vh;
-        padding: 1rem 3rem;
-        background-color: rgba(0, 0, 0, 0.8);
-        border-left: 2px solid var(--warna-utama);
-        border-bottom: 2px solid var(--warna-utama);
-        border-right: 2px solid var(--warna-utama);
-        border-bottom-right-radius: 2rem;
-        border-bottom-left-radius: 2rem;
-        
+        right: -100%; /* Sembunyi di kanan luar layar sebelum diklik */
+        width: 260px; /* Ukuran menu diperkecil agar tidak memenuhi layar */
+        min-height: auto; /* Mengikuti jumlah menu, tidak dipaksa full 100vh */
+        padding: 1.5rem 2rem;
+        background: rgba(0, 0, 0, 0.85); /* Background gelap transparan */
+        backdrop-filter: blur(15px); /* Efek blur kaca yang estetis */
+        border-left: 2px solid var(--main-color); /* Garis pembatas tipis di kiri */
+        border-bottom: 2px solid var(--main-color);
+        border-bottom-left-radius: 2rem; /* Sudut melengkung halus */
+        display: flex;
+        flex-direction: column; /* Menu disusun berjejer ke bawah */
+        gap: 1.5rem;
+        transition: 0.4s ease-in-out; /* Transisi geser yang mulus */
     }
     
+    .navbar a {
+        display: block;
+        font-size: 1.8rem;
+        margin: 0;
+        padding: 0.8rem 1rem;
+        color: var(--text-color);
+        transition: 0.3s;
+    }
+    
+    .navbar a:hover {
+        color: var(--main-color);
+        padding-left: 1.5rem; /* Efek bergeser sedikit ke kanan saat di-hover */
+    }
 
-    .navbar a{
-        align-content: center;
-        display: block;
-        font-size: 3rem;
-        margin: 15rem 0;
-        color: var(--warna-teks);
-    }
-    
+
     .navbar.active{
-        display: block;
-        transition-duration: 1s ease-in-out;
+        right: 2%; /* Jarak tipis dari pinggir kanan layar */
+    
     }
 
 
@@ -639,10 +673,19 @@ header.stiky{
 
  
     
-    .home{
-        flex-direction: column-reverse;
-        margin: 5rem 0;
-        gap: 5rem;
+    .home {
+        flex-direction: column-reverse; /* Teks di atas, gambar di bawah */
+        gap: 3rem;
+        padding-top: 12rem; /* Kasih jarak atas agar tidak tertutup header */
+        text-align: center;
+    }   
+
+    .home-content h1 {
+        font-size: 4rem; /* Perkecil ukuran teks agar muat di HP */
+    }
+
+    .home-content h3 {
+        font-size: 2.2rem;
     }
 
     .home-content{
@@ -650,37 +693,94 @@ header.stiky{
         text-align: center;
     }
 
-    .home-image img{
-        width: 50vw;
+    .home img{
+        width: 70vw;
+        max-width: 280px; /* Batas maksimal ukuran gambar agar tetap proporsional */
     }
 /* about section style */
-    .about{
-        flex-direction: column;
+    .about {
+        flex-direction: column; /* Gambar di atas, teks di bawah */
+        gap: 3rem;
+        padding-top: 10rem;
         text-align: center;
     }
 
-    .about h2{
-        text-align: center;
-        justify-content: center;
-        margin: 2rem 0;
+    .about-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Memaksa tombol Read More ke posisi center */
+    text-align: center;  /* Mengubah teks menjadi rata tengah seperti Home di HP */
     }
 
-    .about img{
-        width: 52vw;
+    .about-image,
+    .about-content {
+    width: 100%;
     }
 
-    .contact form{
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
+    .about-content h2 {
+    font-size: 4rem;
+    }
+
+    .about-image img {
+    width: 70vw; /* Lebar proporsional di layar handphone */
+    max-width: 280px;
+    }
+
+    .contact form {
+        max-width: 600px;
+        margin: 0 auto;
     }
 
     .portofolio-box{
         height: 400px;
         width: 300px;
     }
-  
     
+
+    .input-group {
+        flex-direction: column; /* Input field berjejer ke bawah di HP */
+        gap: 1.5rem;
+    }
+
+    .input-box {
+        width: 100%;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    /* Mengatur container tombol utama */
+    .input-group-2 {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Memaksa semua elemen di dalamnya rata tengah */
+        width: 100%;
+        margin-top: 2rem;
+    }
+
+    .input-group-2 textarea {
+        width: 100%; /* Textarea tetap penuh selebar layar */
+        margin-bottom: 2rem;
+    }
+
+    .input-group-2 .btn {
+        width: auto; /* Tombol tidak melebar penuh */
+        padding: 1.5rem 4rem; /* Kasih padding biar tombolnya proposional */
+        display: inline-block;
+    }
+   
+    .sosial-icon {
+        display: flex;
+        justify-content: center; /* Memastikan ketiga ikon berjejer rapi pas di tengah */
+        align-items: center;
+        gap: 1.5rem; /* Memberi jarak horizontal yang seimbang antar lingkaran ikon */
+        margin: 2rem 0;
+    }
+
+    /* Efek hover opsional khusus warna ikon YouTube saat disentuh kursor */
+    .sosial-icon a:nth-child(3):hover i {
+        color: #ff0000; /* Berubah jadi merah khas YouTube */
+        filter: drop-shadow(0 0 8px #ff0000); /* Efek glow neon merah */
+    }
 }
 
 @keyframes p{
@@ -693,10 +793,10 @@ header.stiky{
 @media (prefers-reduced-motion: no-preference){
     section{
         min-height: 100vh;
-        padding: 2rem 12%; }     
-
+        padding: 2rem 12%;
+    }
        
- }
+}
     @keyframes slide-in{
         to {scale: 1; opacity: 100%; transform: translateX(0px);}
     }
@@ -731,3 +831,16 @@ header.stiky{
 
     }
 
+    /* Animasi kedip kursor */
+    @keyframes blinkCursor {
+    from, to { 
+        background-color: transparent;
+        filter: none;
+    }
+    50% { 
+        background-color: var(--warna-utama);
+        /* Glow terkunci rapat hanya di badan kursor garis tipis */
+        filter: drop-shadow(0 0 4px var(--warna-utama)) 
+                drop-shadow(0 0 8px var(--warna-utama));
+    }
+}
