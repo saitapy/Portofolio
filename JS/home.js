@@ -184,29 +184,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 // =========================================================================
-// 5. FITUR GRAVITASI HP (GIROSKOP) UNTUK ANIMASI PARTICLES
+// 5. FITUR GRAVITASI HP (GIROSKOP) - SINKRONISASI INSTANSI TARGET
 // =========================================================================
 if (window.DeviceOrientationEvent) {
   window.addEventListener("deviceorientation", (event) => {
     // Pastikan library particlesJS sudah berhasil terinisialisasi di sistem
-    if (window.pJSDom && window.pJSDom.length > 0) {
-      const pJS_Instance = window.pJSDom.pJS;
+    if (window.pJSDom && window.pJSDom.pJS) { // Perbaikan pengecekan objek induk bray
+      const pJS_Instance = window.pJSDom.pJS; // Ganti window.pJSDom[0].pJS menjadi baris bersih ini!
       
-      // Mengambil sudut kemiringan HP bray:
-      // gamma = kiri/kanan (-90 sampai 90)
-      // beta = depan/belakang (-180 sampai 180)
-      const tiltX = event.gamma; 
-      const tiltY = event.beta;  
-
-      // Validasi agar sensor membaca saat posisi HP digenggam wajar
+      const tiltX = event.gamma; // Sumbu Kiri-Kanan
+      const tiltY = event.beta;  // Sumbu Depan-Belakang
+ 
       if (tiltX !== null && tiltY !== null) {
         // Konversi sudut kemiringan menjadi koordinat posisi pixel di layar HP
         const scaleX = (tiltX + 90) / 180;
         const scaleY = (tiltY + 90) / 180;
-
+        
         const fakeMouseX = scaleX * pJS_Instance.canvas.w;
         const fakeMouseY = scaleY * pJS_Instance.canvas.h;
-
+        
         // Suntikkan posisi gravitasi baru ke sistem interaktivitas partikel bray!
         pJS_Instance.interactivity.status = "mousemove";
         pJS_Instance.interactivity.mouse.pos_x = fakeMouseX;
@@ -215,5 +211,3 @@ if (window.DeviceOrientationEvent) {
     }
   });
 }
-
-
