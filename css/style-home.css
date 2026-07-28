@@ -24,13 +24,29 @@ html{
 }
 
 body {
-    background: url(/image/Paranoid\ Android\ -\ Sweet.png);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed; /* Memastikan background tidak ikut bergeser kaku pas di-scroll */
-    color: var(--warna-teks);
-    overflow-x: hidden;
+ color: var(--warna-teks);
+ overflow-x: hidden;
+}
+
+/* BACKGROUND PARTICLES EFFECT */
+#particles-js {
+ position: fixed; /* Terkunci di layar saat di-scroll */
+ width: 100%;
+ height: 100%;
+ top: 0;
+ left: 0;
+ z-index: -1;
+ background: url(/image/Paranoid\ Android\ -\ Sweet.png);
+ background-size: cover;
+ background-position: center;
+ background-repeat: no-repeat;
+ background-attachment: fixed;
+}
+
+
+/* Memastikan elemen section kamu transparan agar partikelnya kelihatan */
+section, header {
+  background: transparent !important;
 }
 
 
@@ -58,7 +74,7 @@ header.stiky {
     width: 100%;
     top: 0; /* Ubah dari -80px agar saat di-scroll navigasi tidak menghilang ke atas */
     left: 0;
-    padding: 1.5rem 6%; /* Sedikit diperkecil ukurannya saat sticky agar estetik */
+    padding: 2rem 2%; /* Sedikit diperkecil ukurannya saat sticky agar estetik */
     background: rgba(0, 0, 0, 0.9); /* Perbaikan titik desimal */
     backdrop-filter: blur(10px);
     justify-content: space-between;
@@ -316,7 +332,7 @@ header.stiky {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10rem;
+    gap: 8rem; /* Diperkecil sedikit dari 10rem agar lebih padat dan proporsional */
     min-height: 100vh;
     padding: 0 9%;
     opacity: 0%;
@@ -325,31 +341,32 @@ header.stiky {
 }
 
 .about-content {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start; /* Tombol ikut berjejer rapat ke kiri bray */
-    text-align: left;        /* Teks rata kiri rapi */
-    width: 50%;
+ display: flex;
+ flex-direction: column;
+ align-items: flex-start; /* Memaksa semua elemen di dalamnya (Judul, P, Tombol) berjejer lurus di kiri bray */
+ text-align: left; /* Teks rata kiri bersih dan rapi */
+ width: 55%; /* Alokasi ruang teks sedikit lebih besar agar nyaman dibaca */
 }
 
 .about-image {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 50%;
+    width: 45%; /* Dikunci proporsinya agar seimbang dengan teks */
 }
 
 .about-image img {
     width: 25vw;
+    max-width: 350px; /* Batas maksimal agar tidak meluber di monitor besar */
     border-radius: 50%;
     opacity: 70%;
     box-shadow: 0 0 25px var(--warna-utama);
     transition: 0.4s ease-in-out;
-    scale: .2; 
-    opacity: 0%;
+    opacity: 0%; 
+    transform: translateX(-50px);
     animation: fade-in linear forwards;
     animation-timeline: view();
-    animation-range: 70px 400px;
+    animation-range: 100px 400px;
     animation-delay: 8s;
 }
 
@@ -360,36 +377,42 @@ header.stiky {
                 0 0 50px var(--warna-utama);
 }
 
-.about-content h2{
+.about-content h2 {
     cursor: default;
     font-size: 6rem;
-    margin-bottom: 2rem;
-    scale: .9; opacity: 0%;
+    margin-bottom: 1.5rem; /* Jarak proporsional ke paragraf */
+    scale: .9; 
+    opacity: 0%;
     animation: fade-in linear forwards;
     animation-timeline: view();
     animation-range: 100px 400px;
     animation-delay: 8s;
-    
 }
 
-.about-content p{
+.about-content p {
     cursor: default;
-    font-size: 1.5rem;
+    font-size: 1.6rem; /* Dinaikkan sedikit dari 1.5rem agar seimbang dengan headingnya */
+    font-weight: 400;
     line-height: 1.8;
-    opacity: 0%; transform: translateX(50px);
+    margin-bottom: 2rem; /* Memberi ruang sebelum tombol Read More */
+    opacity: 0%; 
+    transform: translateX(50px);
     animation: fade-in linear forwards;
     animation-timeline: view();
     animation-range: 100px 400px;
     animation-delay: 8s;
 }
 
-.about-content .btn{
-    margin: 3rem 0;
-    scale: 0.2; opacity: 0%; transform:translateY(80px) ;
-    animation: fade-in linear forwards;
-    animation-timeline: view();
-    animation-range: 100px 400px;
-    animation-delay: 8s;
+.about-content .btn {
+ margin: 0; /* Menghilangkan margin bawaan yang bikin layout bergeser */
+ display: inline-block;
+ scale: 0.2; 
+ opacity: 0%; 
+ transform: translateY(80px);
+ animation: fade-in linear forwards;
+ animation-timeline: view();
+ animation-range: 100px 400px;
+ animation-delay: 8s;
 }
 
 ::-webkit-scrollbar{
@@ -423,6 +446,12 @@ header.stiky {
     cursor: default;
     color: var(--warna-teks);
     font-size: 6rem;
+    scale: .9; 
+    opacity: 0%;
+    animation: fade-in linear forwards;
+    animation-timeline: view();
+    animation-range: 100px 400px;
+    animation-delay: 8s;
 }
 
 .portofolio-container{
@@ -512,6 +541,12 @@ header.stiky {
     margin-bottom: 3rem;
     color: var(--warna-teks);
     font-size: 6rem;
+    scale: .9; 
+    opacity: 0%;
+    animation: fade-in linear forwards;
+    animation-timeline: view();
+    animation-range: 100px 400px;
+    animation-delay: 8s;
 }
 
 .contact form{
