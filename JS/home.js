@@ -180,61 +180,57 @@ document.addEventListener("DOMContentLoaded", () => {
       navbar.classList.toggle('active');
     };
   }
+
+  // ===========================================
+  // 4.LOGIKA TABS FILTER PORTOFOLIO
+  // ===========================================
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  const portfolioBoxes = document.querySelectorAll('.portofolio-box');
+
+  filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      // 1. Ubah status class aktif pada tombol bray
+      filterButtons.forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
+
+      // 2. Ambil nilai kategori yang diklik
+      const filterValue = button.getAttribute('data-filter');
+
+      // 3. Saring kotak karya secara instan
+      portfolioBoxes.forEach(box => {
+        const boxCategory = box.getAttribute('data-category');
+        
+        if (filterValue === 'all' || filterValue === boxCategory) {
+          box.classList.remove('hide');
+        } else {
+          box.classList.add('hide');
+        }
+      });
+    });
+  });
 });
 
-
 // =========================================================================
-// 5. FITUR GRAVITASI HP (GIROSKOP) - VERSI REVISI ARRAY & IZIN BROWSER
+// 5. FITUR GRAVITASI HP (GIROSKOP) - SINKRONISASI INSTANSI TARGET
 // =========================================================================
-function aktifkanSensorGravitasi() {
-  window.addEventListener("deviceorientation", (event) => {
-    // Perbaikan fatal: pJSDom wajib dibaca sebagai array indeks ke-0 bray!
-    if (window.pJSDom && window.pJSDom.length > 0) {
-      const pJS_Instance = window.pJSDom[0].pJS; 
-      
-      const tiltX = event.gamma; // Sensor kemiringan Kiri - Kanan
-      const tiltY = event.beta;  // Sensor kemiringan Depan - Belakang
-
-      if (tiltX !== null && tiltY !== null) {
-        // Konversi sudut kemiringan HP menjadi koordinat pixel layar
-        const scaleX = (tiltX + 60) / 120; // Dipersempit sudutnya agar gerakan partikel lebih responsif
-        const scaleY = (tiltY + 60) / 120;
-
-        const fakeMouseX = scaleX * pJS_Instance.canvas.w;
-        const fakeMouseY = scaleY * pJS_Instance.canvas.h;
-
-        // Suntikkan koordinat virtual baru ke core canvas partikel bray
-        pJS_Instance.interactivity.status = "mousemove";
-        pJS_Instance.interactivity.mouse.pos_x = fakeMouseX;
-        pJS_Instance.interactivity.mouse.pos_y = fakeMouseY;
-      }
-    }
-  });
-}
-
-// Logika pembuka blokir privasi sensor browser HP (Android & iOS)
 if (window.DeviceOrientationEvent) {
-  // Jika mendeteksi browser iOS/iPhone (membutuhkan konfirmasi klik) bray
-  if (typeof DeviceOrientationEvent.requestPermission === 'function') {
-    // Membuat tombol aktivasi melayang estetik di layar HP
-    const btnIzin = document.createElement('button');
-    btnIzin.textContent = "Matikan Fitur Kaku? Aktifkan Efek Gravitasi Latar Belakang";
-    btnIzin.style.cssText = "position:fixed; bottom:20px; left:50%; transform:translateX(-50%); z-index:99999; padding:12px 24px; background:#ff9100; color:black; font-weight:bold; font-size:1.4rem; border-radius:3rem; border:none; box-shadow:0 0 15px #ff9100; cursor:pointer;";
-    document.body.appendChild(btnIzin);
-
-    btnIzin.addEventListener('click', () => {
-      DeviceOrientationEvent.requestPermission()
-        .then(response => {
-          if (response === 'granted') {
-            aktifkanSensorGravitasi();
-            btnIzin.remove(); // Hapus tombol setelah diizinkan bray
-          }
-        })
-        .catch(console.error);
-    });
-  } else {
-    // Untuk Android / Browser Desktop saat disimulasikan mode mobile, langsung aktif bray!
-    aktifkanSensorGravitasi();
-  }
+ window.addEventListener("deviceorientation", (event) => {
+ // Pastikan library particlesJS sudah berhasil terinisialisasi
+ if (window.pJSDom && window.pJSDom.length > 0) { 
+ const pJS_Instance = window.pJSDom[0].pJS; // Menggunakan indeks array [0] bray
+ const tiltX = event.gamma; // Sumbu Kiri-Kanan
+ const tiltY = event.beta; // Sumbu Depan-Belakang
+ 
+ if (tiltX !== null && tiltY !== null) {
+ const scaleX = (tiltX + 90) / 180;
+ const scaleY = (tiltY + 90) / 180;
+ const fakeMouseX = scaleX * pJS_Instance.canvas.w;
+ const fakeMouseY = scaleY * pJS_Instance.canvas.h;
+ 
+ pJS_Instance.interactivity.status = "mousemove";
+ pJS_Instance.interactivity.mouse.pos_x = fakeMouseX;
+ pJS_Instance.interactivity.mouse.pos_y = fakeMouseY;
+ }
+ }
+ });
 }
-
