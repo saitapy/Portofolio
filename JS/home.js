@@ -2,7 +2,7 @@
 // 1. ANIMASI TEXT MENGETIK (TYPING EFFECT)
 // ==========================================
 const textEl = document.querySelector(".typing-text");
-const professions = ["Designer", "Web Developer", "Illustrator"];
+const professions = ["Designer", "Frontend Engineer", "Illustrator"];
 let professionsIndex = 0;
 let charIndex = 0;
 let deleting = false;
