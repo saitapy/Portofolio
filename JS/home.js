@@ -44,7 +44,7 @@ function sendEmailViaMailto() {
   const message = document.getElementById("Subject").value; // Mengambil dari ID 'Subject' di HTML
 
   // Format pesan agar rapi saat masuk ke aplikasi email
-  const emailTo = "saitapypresent@gmail.com";
+  const emailTo = "maulanasaitapy60@gmail.com";
   const emailSubject = encodeURIComponent(`Portfolio Message: ${txtSubject}`);
   const emailBody = encodeURIComponent(
     `Nama: ${name}\n` +
